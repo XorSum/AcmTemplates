@@ -1,13 +1,11 @@
 
-
+//////////////////////////////////////////////////////
 
 typedef long long ll;
-
 const int maxn = 1000010;
 const ll mod = 1e9+7;
-ll fac[maxn];
-ll inv[maxn];
-
+ll fac[maxn]; 
+ll inv[maxn]; 
 
 ll qpow(ll a,ll x){
     ll ret=1;
@@ -33,3 +31,30 @@ ll init(){
 ll c(ll n,ll m){
     return fac[n]*inv[m]%mod*inv[n-m]%mod;
 }
+
+
+///////////////////////////////////////////////////////
+
+const int N = 1005;
+ll f[N][N];
+void init(int n)
+{
+    f[0][0] = 1;
+    for(int i = 1;i <= n;i++){
+        f[i][0] = 1;
+        for(int j = 1;j <= i;j++)
+            f[i][j] = f[i-1][j] + f[i-1][j-1];
+    }
+}
+
+////////////////////////////////////////////////////
+
+
+ll n = 6;
+ll cc = 1;
+for (int i = 0; i < n; i++) {
+    cout << cc << endl;
+    cc = cc * (n - i) * qpow(i + 1, mod - 2) % mod;
+}
+
+//////////////////////////////////////////////////////
