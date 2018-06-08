@@ -52,7 +52,7 @@ void init(int n)
 
 ll n = 6;
 ll cc = 1;
-for (int i = 0; i < n; i++) {
+for (int i = 0; i <= n; i++) {
     cout << cc << endl;
     cc = cc * (n - i) * qpow(i + 1, mod - 2) % mod;
 }
