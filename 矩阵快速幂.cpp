@@ -1,15 +1,15 @@
-typedef long long ll;
-const ll mod = 7777777;
+const ll mod = 10000;
+const int MATRX_SIZE = 2;
 struct Matrx{
-    ll a[10][10];
+    ll a[MATRX_SIZE][MATRX_SIZE];
     Matrx(){
         memset(a,0,sizeof a);
     }
     Matrx operator*(const Matrx b) const{
         Matrx ans;
-        for (int i=0;i<10;i++){
-            for (int j=0;j<10;j++){
-                for (int k=0;k<10;k++){
+        for (int i=0;i<MATRX_SIZE;i++){
+            for (int j=0;j<MATRX_SIZE;j++){
+                for (int k=0;k<MATRX_SIZE;k++){
                     ans.a[i][j]=(ans.a[i][j]+a[i][k]*b.a[k][j]%mod)%mod;
                 }
             }
@@ -27,9 +27,9 @@ struct Matrx{
         return ans;
     }
     void show(){
-        for (int i=0;i<10;i++)
+        for (int i=0;i<MATRX_SIZE;i++)
         {
-            for (int j=0;j<10;j++)
+            for (int j=0;j<MATRX_SIZE;j++)
                 printf("%lld ",a[i][j]);
             printf("\n");
         }
