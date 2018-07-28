@@ -1,11 +1,11 @@
 typedef long long ll;
-const ll maxn = 200005
+const ll maxn = 200005;
 
 struct TreeArray{
     ll a[maxn];
     ll n=maxn;
-    void init(ll n){
-        this->n = n;
+    void init(ll nn){
+        n=nn;
         memset(a,0, sizeof(a));
     }
     inline ll lowbit(ll x){
