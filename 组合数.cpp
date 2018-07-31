@@ -28,6 +28,15 @@ ll init(){
     return 0;
 }
 
+void init(ll n){
+    fac[0]=1;
+    for (int i=1;i<=n;i++)
+        fac[i]=fac[i-1]*i%mod;
+    inv[n] = qpow(fac[n],mod-2);
+    for (int i=n-1;i>=0;i--)
+        inv[i]=inv[i+1]*(i+1)%mod;
+}
+
 ll c(ll n,ll m){
     return fac[n]*inv[m]%mod*inv[n-m]%mod;
 }
