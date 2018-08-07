@@ -17,8 +17,7 @@ ll qpow(ll a,ll x,ll mod) {
     return ret;
 }
 
-struct BSGS
-{
+struct BSGS {
     // A^x = B (mod C)
     map<ll,ll>hs;
     ll n,a,c;
