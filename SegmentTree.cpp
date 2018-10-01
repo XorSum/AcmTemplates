@@ -2,8 +2,8 @@
 
 struct STree{
 
-    int data[maxn];
-    int lazy[maxn];
+    int data[maxn*4];
+    int lazy[maxn*4];
     
     void modify(int rt,int l,int r,int val) {
         data[rt] += val*(r-l+1);
