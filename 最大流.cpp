@@ -1,13 +1,9 @@
 #include<bits/stdc++.h>
-
-
 using namespace std;
 typedef long long ll;
-
 const ll N  = 40050;
 const ll M = 40050;
 const ll inf =  LLONG_MAX/2;
-
 
 struct ss{
     int v,next;
@@ -36,8 +32,7 @@ int bfs(){
     q.push(S);
     dis[S]=1;
     while(!q.empty()){
-        int now=q.front();
-        q.pop();
+        int now=q.front();  q.pop();
         for(int i=head[now];i!=-1;i=edg[i].next){
             ss &e=edg[i];
             if(e.flow>0&&dis[e.v]==0){
@@ -46,7 +41,7 @@ int bfs(){
             }
         }
     }
-    if(dis[T]==0)return 0;
+    if (dis[T]==0) return 0;
     return 1;
 }
 
@@ -69,13 +64,12 @@ ll dfs(int x,ll mf) {
 
 ll dinic() {
     ll ans=0,flow;
-    while(bfs()){
-        for(int i=0;i<N;i++)cur[i]=head[i];
-        while(flow=dfs(S,inf))ans+=flow;
+    while (bfs()) {
+        for (int i=0;i<N;i++) cur[i]=head[i];
+        while (flow=dfs(S,inf)) ans+=flow;
     }
     return ans;
 }
-
 
 int main() {
     init();
@@ -89,7 +83,6 @@ int main() {
         addedge(x,y,l);
         addedge(y,x,l);
     }
-    
     ll maxFlow = dinic();
     printf("%lld\n",maxFlow);
     return 0;
