@@ -1,50 +1,52 @@
-const int MAXN = 100010;
-const int MAXM = 100010;
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+const int MAXN = 1010;
+const int MAXM = 4010;
 const int INF  = 0x3f3f3f3f;
 struct Edge {
     int from, to, cap, flow, cost, next;
 };
 Edge edge[MAXM];
-int head[MAXN], edgenum;
+int head[MAXN], edt;
 int pre[MAXN];
 int dist[MAXN];
 bool vis[MAXN];
 
 void init() {
-    edgenum = 0;
+    edt = 0;
     memset(head, -1, sizeof(head));
 }
 
-void addEdge(int u, int v, int w, int c){
-  //  cout<<u<<" "<<v<<" "<<w<<" "<<c<<endl;
-    Edge E1 = {u, v, w, 0, c, head[u]};
-    edge[edgenum] = E1;
-    head[u] = edgenum++;
-    Edge E2 = {v, u, 0, 0, -c, head[v]};
-    edge[edgenum] = E2;
-    head[v] = edgenum++;
+void addEdge(int u, int v, int f, int c){
+  //  cout<<u<<" "<<v<<" "<<f<<" "<<c<<endl;
+    edge[edt] = (Edge){u, v, f, 0, c, head[u]};
+    head[u] = edt++;
+    edge[edt] = (Edge){v, u, 0, 0, -c, head[v]};
+    head[v] = edt++;
 }
 
 bool SPFA(int s, int t) {
-    queue<int> Q;
+    queue<int> q;
     memset(dist, INF, sizeof(dist));
     memset(vis, false, sizeof(vis));
     memset(pre, -1, sizeof(pre));
     dist[s] = 0;
     vis[s] = true;
-    Q.push(s);
-    while(!Q.empty()) {
-        int u = Q.front();
-        Q.pop();
+    q.push(s);
+    while(!q.empty()) {
+        int u = q.front();
+        q.pop();
         vis[u] = false;
         for(int i = head[u]; i != -1; i = edge[i].next) {
-            Edge E = edge[i];
-            if(dist[E.to] > dist[u] + E.cost && E.cap > E.flow) {
-                dist[E.to] = dist[u] + E.cost;
-                pre[E.to] = i;
-                if(!vis[E.to]) {
-                    vis[E.to] = true;
-                    Q.push(E.to);
+            Edge &e = edge[i];
+            if(dist[e.to] > dist[u] + e.cost && e.cap > e.flow) {
+                dist[e.to] = dist[u] + e.cost;
+                pre[e.to] = i;
+                if(!vis[e.to]) {
+                    vis[e.to] = true;
+                    q.push(e.to);
                 }
             }
         }
@@ -52,15 +54,14 @@ bool SPFA(int s, int t) {
     return pre[t] != -1;
 }
 
-void MCMF(int s, int t, int &cost, int &flow)
-{
+void MCMF(int s, int t, int &flow, int &cost) {
     flow = 0;
     cost = 0;
     while(SPFA(s, t)) {
         int Min = INF;
         for(int i = pre[t]; i != -1; i = pre[edge[i^1].to]){
-            Edge E = edge[i];
-            Min = min(Min, E.cap - E.flow);
+            Edge &e = edge[i];
+            Min = min(Min, e.cap - e.flow);
         }
         for(int i = pre[t]; i != -1; i = pre[edge[i^1].to]){
             edge[i].flow += Min;
@@ -73,10 +74,10 @@ void MCMF(int s, int t, int &cost, int &flow)
 
 int main() {
     init();
-    int s = 2*n+1,t =2*n+2;
+    int s = 2*n+1,t = 2*n+2;
     addEdge(from,t0,flow,cost);
     int cost,flow;
-    MCMF(s,t,cost,flow);
+    MCMF(s,t,flow,cost);
     printf("%d %d\n",flow,cost);
     return 0;
 }
