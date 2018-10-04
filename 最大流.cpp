@@ -22,7 +22,7 @@ void init(){
 void addedge(int u,int v,ll flow){
     edg[tot]=(ss){v,head[u],flow};
     head[u]=tot++;
-    edg[tot]=(ss){u,head[v],0};
+    edg[tot]=(ss){u,head[v],0}; // 如果想加双向边就把0改成flow
     head[v]=tot++;
 }
 
@@ -77,12 +77,7 @@ int main() {
     scanf("%lld%lld",&n,&m);
     S = 1;
     T = n;
-    for (int j=1;aa[j].l<aa[i].l;j++) {
-        ll x,y,l;
-        scanf("%lld%lld%lld",&x,&y,&l);
-        addedge(x,y,l);
-        addedge(y,x,l);
-    }
+    addedge(from,to,flow);
     ll maxFlow = dinic();
     printf("%lld\n",maxFlow);
     return 0;
