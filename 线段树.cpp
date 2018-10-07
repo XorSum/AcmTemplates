@@ -1,5 +1,3 @@
-
-
 //  线段树 区间更新 最小值
 
 using namespace std;
@@ -53,8 +51,6 @@ int query(int rt,int l,int r,int L,int R) {
 }
 
 
-
-
 //  ZKW线段树
 
 
@@ -93,14 +89,27 @@ public:
     }
 };
 
+// 单点更新 最小值
 
 
-
-
-
-
-
-
-
-
+int data[maxn<<2];
+void  update(int rt,int l,int r,int x,int val){
+    if (l==r) {
+            data[rt] = val;
+            return ;
+    }else {
+        int mid = (l+r)/2;
+        if (mid<=x) update(rt<<1,l,mid,x,val);
+        else update(rt<<1|1,mid+1,r,x,val);
+        data[rt] = max(data[rt<<1],data[rt<<1|1]);
+    }
+}
+int query(int rt,int l,int r,int L,int R){
+    if (L<=l&&r<=R) return data[rt];
+    int mid = (l+r)/2;
+    int ret = 0;
+    if (L<=mid) ret = max(ret,query(rt<<1,l,mid,L,R));
+    if (mid<R) ret = max(ret,query(rt<<1|1,mid+1,r,L,R));
+    return ret;
+}
 
