@@ -34,7 +34,7 @@ struct BSGS {
         }
     }
 
-    ll solv(ll b) {
+    ll solve(ll b) {
         for (int i=0; i<=n; i++) {
             ll u = qpow(a,i*n,c);
             ll v = b*qpow(u,c-2,c)%c;
@@ -57,7 +57,7 @@ int main() {
     while(t--) {
         ll a,b;
         scanf("%lld%lld",&a,&b);
-        ll k = bsgs.solv(a);
+        ll k = bsgs.solve(a);
         ll ans = qpow(b,k,p);
         printf("%lld\n",ans);
     }
