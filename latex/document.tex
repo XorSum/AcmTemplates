@@ -1,0 +1,123 @@
+\documentclass[twocolumn,a4,twoside]{article}
+\usepackage{xeCJK} 
+\usepackage{amsmath, amsthm}
+\usepackage{listings,xcolor}
+\usepackage{geometry} 
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{fancyhdr} 
+\setsansfont{Source Code Pro} 
+\setmonofont[Mapping={}]{Source Code Pro} 
+\geometry{left=3cm,right=1cm,top=2cm,bottom=1cm} 
+\setlength{\columnsep}{30pt}
+
+
+\pagestyle{fancy}
+\fancyhead[RO,LE]{Page \thepage}
+\fancyhead[LO,RE]{China University of Petroleum}
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{}
+
+\lstset{
+	language    = c++,
+	numbers     = left,
+	numberstyle = \tiny,
+	breaklines  = true,
+	captionpos  = b,
+	tabsize     = 4,
+	frame       = shadowbox,
+	columns     = fullflexible,
+	keywordstyle = \bfseries,
+	basicstyle   = \small\ttfamily,
+	stringstyle  = \color[RGB]{64,64,64}\ttfamily,
+	rulesepcolor = \color{red!20!green!20!blue!20},
+	showstringspaces = false,
+}
+
+
+\title{\CJKfamily{hei} {\bfseries ACM模板}}
+\author{han777404}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{document}\small
+	\pagestyle{headings}
+	\begin{titlepage}
+		\maketitle
+	\end{titlepage}
+	\newpage
+	\pagestyle{empty}
+	\renewcommand{\contentsname}{目录}
+	\tableofcontents
+	\newpage\clearpage
+	\newpage
+	\pagestyle{fancy}
+	\setcounter{page}{1}   
+	
+	
+
+	\section{数学}
+		\subsection{欧拉素数筛}
+		\lstinputlisting{../src/math/欧拉素数筛.cpp}
+		\subsection{BSGS}
+		\lstinputlisting{../src/math/BSGS.cpp}
+		\subsection{Sqrt}
+		\lstinputlisting{../src/math/Sqrt.java}
+		\subsection{中国剩余定理}
+		\lstinputlisting{../src/math/中国剩余定理.cpp}
+		\subsection{快速幂}
+		\lstinputlisting{../src/math/快速幂.cpp}
+		\subsection{本原勾股数树}
+		\lstinputlisting{../src/math/本原勾股数树.cpp}
+		\subsection{欧拉函数phi}
+		\lstinputlisting{../src/math/欧拉函数phi.cpp}
+		\subsection{矩阵快速幂}
+		\lstinputlisting{../src/math/矩阵快速幂.cpp}
+		\subsection{组合数}
+		\lstinputlisting{../src/math/组合数.cpp}
+	
+	\section{图论}
+		\subsection{dijkstra}
+		\lstinputlisting{../src/graph/dijkstra.cpp}
+		\subsection{次短路}
+		\lstinputlisting{../src/graph/次短路.cpp}
+		\subsection{lca}
+		\lstinputlisting{../src/graph/lca.cpp}
+		\subsection{最大流}
+		\lstinputlisting{../src/graph/最大流.cpp}
+		\subsection{最小费用流}
+		\lstinputlisting{../src/graph/最小费用流.cpp}
+	
+	\section{数据结构}
+		\subsection{SegmentTree}
+		\lstinputlisting{../src/datastructure/SegmentTree.cpp}
+		\subsection{treap}
+		\lstinputlisting{../src/datastructure/treap.cpp}
+		\subsection{树状数组}
+		\lstinputlisting{../src/datastructure/树状数组.cpp}
+		\subsection{树链剖分}
+		\lstinputlisting{../src/datastructure/树链剖分.cpp}
+		\subsection{线段树}
+		\lstinputlisting{../src/datastructure/线段树.cpp}
+	
+	
+	\section{字符串}
+		\subsection{AC自动机}
+		\lstinputlisting{../src/string/AC自动机.cpp}
+		\subsection{kmp}
+		\lstinputlisting{../src/string/kmp.cpp}
+		
+	\section{其它}
+		\subsection{FastIO}
+		\lstinputlisting{../src/others/FastIO.cpp}
+		\subsection{header}
+		\lstinputlisting{../src/others/header.cpp}
+		\subsection{凸包旋转卡壳}
+		\lstinputlisting{../src/others/凸包旋转卡壳.cpp}
+		\subsection{最远曼哈顿距离}
+		\lstinputlisting{../src/others/最远曼哈顿距离.cpp}
+		\subsection{最长上升子序列}
+		\lstinputlisting{../src/others/最长上升子序列.cpp}
+
+
+\end{document}
