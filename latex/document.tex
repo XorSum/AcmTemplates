@@ -1,4 +1,4 @@
-\documentclass[twocolumn,a4,twoside]{article}
+\documentclass[twocolumn,a4,twoside]{book}
 \usepackage{xeCJK} 
 \usepackage{amsmath, amsthm}
 \usepackage{listings,xcolor}
@@ -8,7 +8,7 @@
 \usepackage{fancyhdr} 
 \setsansfont{Source Code Pro} 
 \setmonofont[Mapping={}]{Source Code Pro} 
-\geometry{left=3cm,right=1cm,top=2cm,bottom=1cm} 
+\geometry{left=2cm,right=1cm,top=2cm,bottom=1cm} 
 \setlength{\columnsep}{30pt}
 
 
@@ -41,82 +41,76 @@
 \renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
 
 \begin{document}\small
-	\pagestyle{headings}
+	\pagestyle{empty}
 	\begin{titlepage}
 		\maketitle
 	\end{titlepage}
-	\newpage
-	\pagestyle{empty}
-	\renewcommand{\contentsname}{目录}
 	\tableofcontents
-	\newpage\clearpage
-	\newpage
+	\mainmatter
 	\pagestyle{fancy}
-	\setcounter{page}{1}   
 	
 	
-
-	\section{数学}
-		\subsection{欧拉素数筛}
+	\chapter{数学}
+		\section{欧拉素数筛}
 		\lstinputlisting{../src/math/欧拉素数筛.cpp}
-		\subsection{BSGS}
-		\lstinputlisting{../src/math/BSGS.cpp}
-		\subsection{Sqrt}
-		\lstinputlisting{../src/math/Sqrt.java}
-		\subsection{中国剩余定理}
-		\lstinputlisting{../src/math/中国剩余定理.cpp}
-		\subsection{快速幂}
-		\lstinputlisting{../src/math/快速幂.cpp}
-		\subsection{本原勾股数树}
-		\lstinputlisting{../src/math/本原勾股数树.cpp}
-		\subsection{欧拉函数phi}
+		\section{欧拉函数phi}
 		\lstinputlisting{../src/math/欧拉函数phi.cpp}
-		\subsection{矩阵快速幂}
+		\section{BSGS}
+		\lstinputlisting{../src/math/BSGS.cpp}
+		\section{java大数sqrt}
+		\lstinputlisting{../src/math/Sqrt.java}
+		\section{中国剩余定理}
+		\lstinputlisting{../src/math/中国剩余定理.cpp}
+		\section{本原勾股数树}
+		\lstinputlisting{../src/math/本原勾股数树.cpp}
+		\section{快速幂}
+		\lstinputlisting{../src/math/快速幂.cpp}
+		\section{矩阵快速幂}
 		\lstinputlisting{../src/math/矩阵快速幂.cpp}
-		\subsection{组合数}
+		\section{组合数}
 		\lstinputlisting{../src/math/组合数.cpp}
 	
-	\section{图论}
-		\subsection{dijkstra}
+	\chapter{图论}
+		\section{dijkstra}
 		\lstinputlisting{../src/graph/dijkstra.cpp}
-		\subsection{次短路}
+		\section{次短路}
 		\lstinputlisting{../src/graph/次短路.cpp}
-		\subsection{lca}
+		\section{lca}
 		\lstinputlisting{../src/graph/lca.cpp}
-		\subsection{最大流}
+		\section{最大流}
 		\lstinputlisting{../src/graph/最大流.cpp}
-		\subsection{最小费用流}
+		\section{最小费用流}
 		\lstinputlisting{../src/graph/最小费用流.cpp}
 	
-	\section{数据结构}
-		\subsection{SegmentTree}
+	\chapter{数据结构}
+		\section{SegmentTree}
 		\lstinputlisting{../src/datastructure/SegmentTree.cpp}
-		\subsection{treap}
+		\section{treap}
 		\lstinputlisting{../src/datastructure/treap.cpp}
-		\subsection{树状数组}
+		\section{树状数组}
 		\lstinputlisting{../src/datastructure/树状数组.cpp}
-		\subsection{树链剖分}
+		\section{树链剖分}
 		\lstinputlisting{../src/datastructure/树链剖分.cpp}
-		\subsection{线段树}
+		\section{线段树}
 		\lstinputlisting{../src/datastructure/线段树.cpp}
 	
 	
-	\section{字符串}
-		\subsection{AC自动机}
+	\chapter{字符串}
+		\section{AC自动机}
 		\lstinputlisting{../src/string/AC自动机.cpp}
-		\subsection{kmp}
+		\section{kmp}
 		\lstinputlisting{../src/string/kmp.cpp}
 		
-	\section{其它}
-		\subsection{FastIO}
+	\chapter{其它}
+		\section{FastIO}
 		\lstinputlisting{../src/others/FastIO.cpp}
-		\subsection{header}
+		\section{header}
 		\lstinputlisting{../src/others/header.cpp}
-		\subsection{凸包旋转卡壳}
+		\section{凸包旋转卡壳}
 		\lstinputlisting{../src/others/凸包旋转卡壳.cpp}
-		\subsection{最远曼哈顿距离}
+		\section{最远曼哈顿距离}
 		\lstinputlisting{../src/others/最远曼哈顿距离.cpp}
-		\subsection{最长上升子序列}
+		\section{最长上升子序列}
 		\lstinputlisting{../src/others/最长上升子序列.cpp}
 
 

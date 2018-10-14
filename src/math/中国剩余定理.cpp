@@ -2,33 +2,27 @@
 #include <cstring>  
 #include <iostream>  
 using namespace std;  
-void gcd(int a,int b,int &d,int &x,int &y)  
-{//a*x+b*y=gcd(a,b)=d;(x,y)为其一组整数解  
+void gcd(int a,int b,int &d,int &x,int &y)  {
+    //a*x+b*y=gcd(a,b)=d;(x,y)为其一组整数解  
     if(!b){d=a;x=1;y=0;}  
     else{ gcd(b,a%b,d,y,x);y-=x*(a/b);}  
 }  
-int main()  
-{  
+int main()  {  
     int n,m,m1,r1,m2,r2,flag=0,a[11],b[11],T;  
     cin>>T;  
-    while(T--)  
-    {  
+    while(T--){  
         cin>>n>>m;  
         int i,j,k,d,x,y,c,t;  
-        for(i=0;i<m;i++)  
-            cin>>a[i];  
-        for(i=0;i<m;i++)  
-            cin>>b[i];  
+        for(i=0;i<m;i++) cin>>a[i];  
+        for(i=0;i<m;i++) cin>>b[i];  
         flag=0;  
         m1=a[0];r1=b[0];  
-        for(i=1;i<m;i++)  
-        {  
+        for(i=1;i<m;i++){  
             m2=a[i];r2=b[i];  
             if(flag)continue;  
             gcd(m1,m2,d,x,y);//d=gcd(m1,m2);x*m1+y*m2=d;  
             c=r2-r1;  
-            if(c%d)//对于方程m1*x+m2*y=c，如果c不是d的倍数就无整数解  
-            {  
+            if(c%d){ //对于方程m1*x+m2*y=c，如果c不是d的倍数就无整数解 
                 flag=1;  
                 continue;  
             }  
@@ -40,8 +34,7 @@ int main()
             m1=m1*m2/d;  
         }  
         if(flag||n<r1)cout<<0<<endl;  
-        else  
-        {  
+        else{  
             int ans=(n-r1)/m1+1;//m1为ai的最小公倍数，凡是m1*i+r1的都是符合要求的数，其中r1最小  
             if(r1==0)ans--;//要求是正整数  
             cout<<ans<<endl;  
@@ -49,6 +42,4 @@ int main()
     }  
     return 0;  
 }  
-/* 
-    中国剩余定理的普通情况：ai不一定相互互质 
-*/  
+/* 中国剩余定理的普通情况：ai不一定相互互质 */  

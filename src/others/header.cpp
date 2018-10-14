@@ -59,8 +59,7 @@ const int INT_INFINITY = 1001001001;
 const ll LONG_INFINITY = 2001001001001001001ll;
 const double EPS = 1e-6;
 
-int readStr(char *str)
-{
+int readStr(char *str) {
     register char c = getchar();
     register int len = 0;
     if(!(~c)) return -1;
@@ -73,11 +72,10 @@ int readStr(char *str)
     str[len] = '\0';
     return 1;
 }
-//-------------------------------------------------------END OF TEMPLATE---------------------------------------------------------------------------
+//--------------END OF TEMPLATE--------------
 
 
-int main()
-{
+int main() {
 	//fio;
     #ifdef LOCAL_DEFINE
         clock_t tStart = clock();
