@@ -18,29 +18,34 @@ ll qpow(ll a,ll x){
     return ret;
 }
 
-ll init(){
+void init(){
     fac[0]=1;
     for (int i=1;i<maxn;i++)
         fac[i]=fac[i-1]*i%mod;
     inv[maxn-1]=qpow(fac[maxn-1],mod-2);
     for (int i=maxn-2;i>=0;i--)
         inv[i]=inv[i+1]*(i+1)%mod;
-    return 0;
 }
 
-void init(ll n){
+void init() {
     fac[0]=1;
-    for (int i=1;i<=n;i++)
-        fac[i]=fac[i-1]*i%mod;
-    inv[n] = qpow(fac[n],mod-2);
-    for (int i=n-1;i>=0;i--)
-        inv[i]=inv[i+1]*(i+1)%mod;
+    for(int i = 1; i < mod; ++i) fac[i]=fac[i-1]*i%mod;
+    inv[1]=1;
+    for(int i = 2; i < mod; ++i) inv[i]=inv[mod%i]*(mod-mod/i)%mod;
+    inv[0]=1;
+    for(int i = 2; i < mod; ++i) inv[i]=inv[i]*inv[i-1]%mod;
 }
 
-ll c(ll n,ll m){
-    return fac[n]*inv[m]%mod*inv[n-m]%mod;
+ll c(ll n, ll m) {
+    if (m > n) return 0;
+    return fac[n] * inv[n - m] % mod * inv[m] % mod;
 }
 
+ll lucas(ll n, ll m) {
+    if (m > n) return 0;
+    if (m == 0) return 1;
+    return c(n % mod, m % mod) * lucas(n / mod, m / mod) % mod;
+}
 
 ///////////////////
 
