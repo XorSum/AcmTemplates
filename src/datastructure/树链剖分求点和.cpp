@@ -1,3 +1,7 @@
+---
+title: SegmentTree
+chapter: DataStructure
+---
 
 STree st;
 ll fa[maxn], dep[maxn], siz[maxn], top[maxn], w[maxn];

@@ -1,3 +1,8 @@
+---
+title: Dijkstra
+chapter: Graph
+---
+
 typedef long long ll;
 const ll maxn = 300010;
 vector<int> mmp[maxn];

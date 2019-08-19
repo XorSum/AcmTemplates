@@ -1,3 +1,8 @@
+---
+title: TreeArray
+chapter: DataStructure
+---
+
 typedef long long ll;
 const ll maxn = 200005;
 

@@ -1,3 +1,8 @@
+---
+title: Treap
+chapter: DataStructure
+---
+
 // 有封装
 #include<iostream>
 #include <cstdio>

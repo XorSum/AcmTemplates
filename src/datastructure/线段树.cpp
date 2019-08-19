@@ -1,3 +1,9 @@
+---
+title: SegmentTree
+chapter: DataStructure
+---
+
+
 //  线段树 区间更新 最小值
 
 using namespace std;

@@ -1,3 +1,8 @@
+---
+title: Dijkstra
+chapter: Graph
+---
+
 // //其实主要还是自己复习用
 
 // //假定读者能够熟练打dinic的板子

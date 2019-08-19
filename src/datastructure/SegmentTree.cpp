@@ -1,4 +1,7 @@
-
+---
+title: SegmentTree
+chapter: DataStructure
+---
 
 struct STree{
 

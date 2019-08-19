@@ -1,3 +1,8 @@
+---
+title: SegmentTree
+chapter: DataStructure
+---
+
 #include <bits/stdc++.h>
 
 using namespace std;
