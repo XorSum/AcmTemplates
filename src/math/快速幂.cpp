@@ -1,4 +1,9 @@
-
+---
+index: 4
+title: quick sort
+---
+st
+---
 
 ll qpow(ll a,ll x){
     ll ret=1;

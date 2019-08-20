@@ -1,6 +1,8 @@
 ---
+index: 2
 title: SegmentTree
-chapter: DataStructure
+---
+st
 ---
 
 #include <bits/stdc++.h>

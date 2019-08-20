@@ -1,6 +1,8 @@
 ---
-title: Dijkstra
-chapter: Graph
+index: 6
+title: Min Cost Max Flow
+---
+st
 ---
 
 #include<bits/stdc++.h>

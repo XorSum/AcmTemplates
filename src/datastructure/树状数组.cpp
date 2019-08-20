@@ -1,6 +1,8 @@
 ---
-title: TreeArray
-chapter: DataStructure
+index: 3
+title: Tree Array
+---
+st
 ---
 
 typedef long long ll;

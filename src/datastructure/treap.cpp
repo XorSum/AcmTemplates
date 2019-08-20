@@ -1,6 +1,8 @@
 ---
+index: 7
 title: Treap
-chapter: DataStructure
+---
+Treap
 ---
 
 // 有封装

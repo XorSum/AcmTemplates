@@ -1,4 +1,9 @@
-// 计算数字 X 在 1-n 中出现的次数。
+---
+index: 11
+title: Count
+---
+计算数字 X 在 1-n 中出现的次数。
+---
 int count(int n, int x) {
     int cnt = 0, k;
     for (int i = 1;k = n / i;i *= 10) {

@@ -1,3 +1,10 @@
+---
+index: 5
+title: gougu
+---
+st
+---
+
 #include<iostream>
 
 typedef long long ll;

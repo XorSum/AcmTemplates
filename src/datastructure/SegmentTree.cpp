@@ -1,8 +1,9 @@
 ---
+index: 1
 title: SegmentTree
-chapter: DataStructure
 ---
-
+segment tree, modify range, query the summary
+---
 struct STree{
 
     int data[maxn<<2];

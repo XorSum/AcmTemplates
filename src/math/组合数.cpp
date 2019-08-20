@@ -1,4 +1,9 @@
-
+---
+index: 10
+title: combination
+---
+st
+---
 ///////////////////
 
 typedef long long ll;

@@ -1,3 +1,9 @@
+---
+index: 2
+title: crt
+---
+st
+---
 #include <cstdio>  
 #include <cstring>  
 #include <iostream>  

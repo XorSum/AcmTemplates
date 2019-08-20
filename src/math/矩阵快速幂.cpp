@@ -1,3 +1,9 @@
+---
+index: 8
+title: quick pow of matrix
+---
+st
+---
 const ll mod = 10000;
 const int MATRX_SIZE = 2;
 struct Matrx{

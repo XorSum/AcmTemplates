@@ -1,4 +1,9 @@
-
+---
+index: 7
+title: prime
+---
+st
+---
 const int maxn = 1000010;
 ll prime[maxn], notPrime[maxn], priCnt=0;
 

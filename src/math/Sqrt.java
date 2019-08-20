@@ -1,3 +1,10 @@
+---
+index: 3
+title: sqrt for java
+---
+st
+---
+  
   public static BigInteger sqrt(BigInteger x) {
 		
 		BigInteger l = BigInteger.ZERO, r = BigInteger.valueOf(2);

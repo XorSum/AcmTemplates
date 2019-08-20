@@ -1,3 +1,9 @@
+---
+index: 4
+title: Longest Manhadun
+---
+Header
+---
 const int maxn = 200005;
 ll a[maxn][7];
 

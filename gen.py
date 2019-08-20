@@ -3,37 +3,6 @@ import os
 import re
 
 
-def scan_files(root_path):
-    file_pathes = []
-    for i,j,k in os.walk(root_path):
-        for l in k:
-            path = os.path.join(i,l)
-            # print(path)
-            file_pathes.append(path)
-    return file_pathes
-
-def read_file(path):
-    with open(path,"r") as f:
-        content = f.read()
-        # print(content)
-        return content
-    return None
-
-def extract_data(content):
-    pattern = re.compile('---\ntitle: (.*)\nchapter: (.*)\n---\n(.*)',re.DOTALL)
-    match = re.match(pattern, content)
-    if match is not None:
-        # print(match.group(1))
-        # print(match.group(2))
-        # print(match.group(3))
-        section = {
-            'title': match.group(1),
-            'chapter': match.group(2),
-            'code': match.group(3),
-        }
-        return section
-    return None    
-
 header = '''\\documentclass[twocolumn,a4,twoside]{book}
 \\usepackage{xeCJK} 
 \\usepackage{amsmath, amsthm}
@@ -62,7 +31,7 @@ header = '''\\documentclass[twocolumn,a4,twoside]{book}
 	breaklines  = true,
 	captionpos  = b,
 	tabsize     = 4,
-	frame       = shadowbox,
+	frame       = box,
 	columns     = fullflexible,
 	keywordstyle = \\bfseries,
 	basicstyle   = \\small\\ttfamily,
@@ -73,7 +42,7 @@ header = '''\\documentclass[twocolumn,a4,twoside]{book}
 
 
 \\title{\\CJKfamily{hei} {\\bfseries ACM模板}}
-\\author{han777404}
+\\author{XORSUM}
 \\renewcommand{\\today}{\\number\\year 年 \\number\\month 月 \\number\\day 日}
 
 \\begin{document}\\small
@@ -85,39 +54,94 @@ header = '''\\documentclass[twocolumn,a4,twoside]{book}
 	\\mainmatter
 	\\pagestyle{fancy}'''
 
-def render_latex(documents):
-    with open("out.tex","w") as f:
-        f.write(header)
-        for chapter,sections in documents.items():
-            f.write('\n    \\chapter{'+chapter+'}\n')
-            print("Chapter  ",chapter)
-            for section in sections:
-                f.write('        \\section{'+section['title']+'}\n')
-                f.write('        \\begin{lstlisting}\n')
-                f.write(section['code'])
-                f.write('        \\end{lstlisting}\n')
-                print("Section  ",section['title'])
-            f.write('\n')
-            
-        f.write('\\end{document}') # footer
+def read_file(path):
+    with open(path,"r") as f:
+        content = f.read()
+        # print(content)
+        return content
+    return None
+
+
+def write_file(path,content):
+    with open(path,"w") as f:
+        f.write(content)
+        return content
+    return None
+
+
+
+def extract_summary(content):
+    pattern = re.compile('---\nindex: (.*)\ntitle: (.*)\n---',re.DOTALL)
+    match = re.match(pattern, content)
+    if match is not None:
+        summary = {
+            'index': match.group(1),
+            'title': match.group(2),
+        }
+        return summary
+    return None    
+
+def extract_section(content):
+    pattern = re.compile('---\nindex: (.*)\ntitle: (.*)\n---\n(.*)\n---\n(.*)',re.DOTALL)
+    match = re.match(pattern, content)
+    if match is not None:
+        section = {
+            'index': match.group(1),
+            'title': match.group(2),
+            'description': match.group(3),
+            'code': match.group(4),
+        }
+        return section
+    return None    
+
+
+
+def scan_source(root_path="./src"):
+    document = []
+    for path in os.listdir(root_path):
+        path = os.path.join(root_path,path)
+        if os.path.isfile(path):
+            continue
+        summary = os.path.join(path,"summary.md")
+        if not os.path.exists(summary):
+            continue
+        chapter = extract_summary(read_file(summary))
+        # print(chapter)
+        sections = []
+        for file in os.listdir(path):
+            if file == 'summary.md':
+                continue
+            file = os.path.join(path,file)
+            section = extract_section(read_file(file))
+            if section is not None:
+                sections.append(section)
+        sections.sort(key=lambda x:x['index'])
+        chapter['sections']=sections
+        document.append(chapter)
+    document.sort(key=lambda x:x['index'])
+    return document
+
+def render_latex(document):
+    latex = header
+    for chapter in document:
+        latex = latex + '\n    \\chapter{'+chapter['title']+'}\n'
+        sections = chapter['sections']
+        for section in sections:
+            latex = latex + '        \\section{'+section['title']+'}\n'
+            latex = latex + section['description'] + '\n'
+            latex = latex + '        \\begin{lstlisting}\n'
+            latex = latex + section['code']
+            latex = latex + '        \\end{lstlisting}\n'
+            print("Section  ",section['title'])
+        latex = latex + '\n'
+    latex = latex + '\\end{document}' # footer
+    return latex
 
 
 if __name__ == '__main__':
     print("start")
-    pathes = scan_files("./src")
-    documents = {}
-    for i in pathes:
-        # print(i)
-        content = read_file(i)
-        if content is not None:
-            section = extract_data(content)
-            # print(section)
-            if section is not None:
-                l = documents.get(section['chapter'],[])
-                l.append(section)
-                documents[section['chapter']]=l
-    # print(documents)
-    render_latex(documents)
-
+    document = scan_source()
+    latex = render_latex(document)
+    write_file("out/document.tex",latex)
 
     print("end")

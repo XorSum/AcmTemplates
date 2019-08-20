@@ -1,6 +1,8 @@
 ---
-title: SegmentTree
-chapter: DataStructure
+index: 5
+title: Tree Link Cut
+---
+st
 ---
 
 #include <bits/stdc++.h>

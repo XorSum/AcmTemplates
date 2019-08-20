@@ -1,6 +1,8 @@
 ---
-title: Dijkstra
-chapter: Graph
+index: 2
+title: lca
+---
+st
 ---
 
 typedef long long ll;

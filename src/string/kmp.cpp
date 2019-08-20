@@ -1,3 +1,9 @@
+---
+index: 1
+title: kmp
+---
+kmp
+---
 const ll maxn = 1000006;
 int Next[maxn];
 char  str[maxn];

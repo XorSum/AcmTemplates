@@ -1,3 +1,9 @@
+---
+index: 6
+title: eulur function
+---
+st
+---
 // 单个
 ll Euler(ll n) {
     ll ret=n;

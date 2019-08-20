@@ -1,3 +1,9 @@
+---
+index: 1
+title: Fast IO
+---
+Fast IO
+---
 namespace FastIO {
     const int SIZE = 1 << 16;
     char buf[SIZE], str[64];

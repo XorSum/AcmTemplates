@@ -1,8 +1,9 @@
 ---
-title: SegmentTree
-chapter: DataStructure
+index: 4
+title: Tree Link Cut
 ---
-
+st
+---
 STree st;
 ll fa[maxn], dep[maxn], siz[maxn], top[maxn], w[maxn];
 vector<ll> son[maxn];

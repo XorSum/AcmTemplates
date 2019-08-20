@@ -1,3 +1,9 @@
+---
+index: 2
+title: tubao
+---
+tubao
+---
 #include <cstdio>
 #include <algorithm>
 #include <iostream>

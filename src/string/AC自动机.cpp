@@ -1,7 +1,14 @@
-// Keywords Search
-// 网络流上流传最广的AC自动机模板题，问你目标串中出现了几个模式串
-// 如果一个结点是单词末尾的话out标记为true,在search的时候对于每个结点都向fail指针找
-// 找到out为true的就将其标记为false,且ans++
+---
+index: 2
+title: AC自动机
+---
+AC自动机
+Keywords Search
+网络流上流传最广的AC自动机模板题，问你目标串中出现了几个模式串
+如果一个结点是单词末尾的话out标记为true,在search的时候对于每个结点都向fail指针找
+找到out为true的就将其标记为false,且ans++
+---
+
 #include <cstdio>
 #include <iostream>
 #include <string.h>

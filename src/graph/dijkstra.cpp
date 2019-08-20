@@ -1,8 +1,9 @@
 ---
+index: 1
 title: Dijkstra
-chapter: Graph
 ---
-
+st
+---
 #include <bits/stdc++.h>
 
 using namespace std;

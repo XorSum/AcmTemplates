@@ -1,6 +1,8 @@
 ---
+index: 6
 title: SegmentTree
-chapter: DataStructure
+---
+st
 ---
 
 

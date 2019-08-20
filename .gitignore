@@ -34,3 +34,5 @@
 # latex
 latex/
 !latex/*.tex
+
+out/
