@@ -1,3 +1,4 @@
+#! /bin/python3
 import sys
 import os
 import re
@@ -63,6 +64,9 @@ def read_file(path):
 
 
 def write_file(path,content):
+    head,tail = os.path.split(path)
+    if not os.path.exists(head):
+        os.mkdir(head)
     with open(path,"w") as f:
         f.write(content)
         return content
@@ -106,7 +110,8 @@ def scan_source(root_path="./src"):
         if not os.path.exists(summary):
             continue
         chapter = extract_summary(read_file(summary))
-        # print(chapter)
+        if chapter is None:
+            continue
         sections = []
         for file in os.listdir(path):
             if file == 'summary.md':
@@ -137,11 +142,47 @@ def render_latex(document):
     latex = latex + '\\end{document}' # footer
     return latex
 
+def create_chapter(name):
+    path = os.path.join("src",name)
+    if not os.path.exists(path):
+        os.mkdir(path)
+        content="---\nindex: 0\ntitle: "+name+"\n---\n"
+        path = os.path.join(path,"summary.md")
+        write_file(path,content)
+
+def create_section(name):
+    path = os.path.join("src",name+".md")
+    if not os.path.exists(path):
+        content="---\nindex: 0\ntitle: "+name+"\n---\n\ndescription\n\n---\n\ncode\n"
+        write_file(path,content)
+
+def show_help():
+    help="""
+nc <name> :  create new chapter
+ns <name> :  create new section
+g   :  generate latex file    
+h   :  show help
+"""
+    print(help)
 
 if __name__ == '__main__':
-    print("start")
-    document = scan_source()
-    latex = render_latex(document)
-    write_file("out/document.tex",latex)
 
-    print("end")
+    try:
+        command = sys.argv[1]
+        if command == "g":
+            document = scan_source()
+            latex = render_latex(document)
+            write_file("out/document.tex",latex)
+        elif command == "nc":
+            name = sys.argv[2]
+            create_chapter(name)
+        elif command == "ns":
+            name = sys.argv[2]
+            create_section(name)
+        else:
+            show_help()
+    except Exception as e:
+        repr(e)    
+        show_help()
+
+
