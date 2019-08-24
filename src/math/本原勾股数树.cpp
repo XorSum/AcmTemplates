@@ -9,13 +9,18 @@ st
 
 typedef long long ll;
 
-ll N;
+unordered_map<ll, ll> mp;
 
-void Search(ll a,ll b,ll c){
-    std::cout<<a<<' '<<b<<' '<<c<<std::endl;
-    if(a<b && 2ll*c+b-2ll*a<=N && 2ll*c+2ll*b-a<=N && 3ll*c+2ll*b-2ll*a<=N) Search(2ll*c+b-2ll*a, 2ll*c+2ll*b-a, 3ll*c+2ll*b-2ll*a);
-    if(2ll*c-2ll*b+a<=N && 2ll*c-b+2ll*a<=N && 3ll*c-2ll*b+2ll*a<=N) Search(2ll*c-2ll*b+a, 2ll*c-b+2ll*a, 3ll*c-2ll*b+2ll*a);
-    if(2ll*c+b+2ll*a<=N && 2ll*c+2ll*b+a<=N && 3ll*c+2ll*b+2ll*a<=N) Search(2ll*c+b+2ll*a, 2ll*c+2ll*b+a, 3ll*c+2ll*b+2ll*a);
+ll N = 1500000;
+
+void Search(ll a, ll b, ll c) {
+    ll l = a + b + c;
+    if (a > N || b > N || l > N) return;
+    cout<<a<<" "<<b<<" "<<c<<endl;
+    for (ll i = 1; i * l <= N; i++) mp[i * l]++;
+    if (a < b) Search(2ll * c + b - 2ll * a, 2ll * c + 2ll * b - a, 3ll * c + 2ll * b - 2ll * a);
+    Search(2ll * c - 2ll * b + a, 2ll * c - b + 2ll * a, 3ll * c - 2ll * b + 2ll * a);
+    Search(2ll * c + b + 2ll * a, 2ll * c + 2ll * b + a, 3ll * c + 2ll * b + 2ll * a);
 }
 
 int main(){
