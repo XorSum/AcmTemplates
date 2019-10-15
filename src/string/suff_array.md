@@ -1,6 +1,6 @@
 ---
 index: 12
-title: suffix_array
+title: suff_array
 ---
 
 description
